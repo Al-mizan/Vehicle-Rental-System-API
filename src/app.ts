@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // root route
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).json("WOW, my app is running!");
+    res.status(200).json("WOW, my app, Vehicle Rental System API, is running!");
 });
 
 // all auth routes

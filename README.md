@@ -2,7 +2,7 @@
 
 A robust RESTful API for managing vehicle rentals with role-based access control, built with TypeScript and Express.
 
-**Live URL:** [Add your deployed URL here]
+**Live URL:** [garilagbe-ten.vercel.app](https://garilagbe-ten.vercel.app/)
 
 ---
 
@@ -25,7 +25,7 @@ A robust RESTful API for managing vehicle rentals with role-based access control
 - **Status Updates**: Flexible booking status management
 
 ### Database & Infrastructure
-- **PostgreSQL Integration**: Robust relational database with automatic schema initialization
+- **Neon PostgreSQL**: Serverless PostgreSQL database for scalable and reliable data storage
 - **Auto Schema Bootstrap**: Automatic creation of enum types and tables on startup
 - **Request Logging**: Lightweight middleware for request tracking and debugging
 
@@ -39,7 +39,7 @@ A robust RESTful API for managing vehicle rentals with role-based access control
 - **Language**: TypeScript 5.9+
 
 ### Database
-- **Database**: PostgreSQL
+- **Database**: Neon PostgreSQL (Serverless PostgreSQL)
 - **Driver**: `pg` (node-postgres)
 
 ### Authentication & Security
@@ -62,8 +62,8 @@ A robust RESTful API for managing vehicle rentals with role-based access control
 
 Before you begin, ensure you have the following installed:
 - **Node.js** (version 18 or higher)
-- **PostgreSQL** (version 12 or higher)
 - **npm** (comes with Node.js)
+- **Neon PostgreSQL Account**: Sign up at [neon.tech](https://neon.tech) for a free serverless PostgreSQL database
 
 ---
 
@@ -71,8 +71,8 @@ Before you begin, ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd vehicle_rental_systam
+git clone https://github.com/Al-mizan/Vehicle-Rental-System-API.git
+cd Vehicle-Rental-System-API
 ```
 
 ### 2. Install Dependencies
@@ -80,26 +80,23 @@ cd vehicle_rental_systam
 npm install
 ```
 
-### 3. Database Setup
-Create a PostgreSQL database for the application:
-```sql
-CREATE DATABASE vehicle_rental_db;
-```
+### 3. Neon PostgreSQL Setup
+1. Sign up for a free account at [neon.tech](https://neon.tech)
+2. Create a new project in the Neon dashboard
+3. Copy your connection string from the Neon dashboard (it will look like: `postgres://username:password@ep-xxx-xxx.region.aws.neon.tech/dbname?sslmode=require`)
 
 ### 4. Environment Configuration
 Create a `.env` file in the project root directory:
 ```env
 PORT=5000
-CONNECTION_STRING=postgres://USERNAME:PASSWORD@localhost:5432/vehicle_rental_db
+CONNECTION_STRING=postgres://username:password@ep-xxx-xxx.region.aws.neon.tech/dbname?sslmode=require
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
 ```
 
-**Important**: Replace the following placeholders:
-- `USERNAME`: Your PostgreSQL username
-- `PASSWORD`: Your PostgreSQL password
-- `localhost:5432`: Your PostgreSQL host and port (if different)
-- `vehicle_rental_db`: Your database name
-- `your-super-secret-jwt-key-change-this-in-production`: A strong, random secret key
+**Important**:
+- Replace `CONNECTION_STRING` with your Neon PostgreSQL connection string from step 3
+- Replace `your-super-secret-jwt-key-change-this-in-production` with a strong, random secret key for JWT token signing
+- The connection string from Neon already includes SSL mode, which is required for secure connections
 
 ### 5. Database Initialization
 The application will automatically create required database schemas (enum types and tables) on startup. No manual migration is needed.
@@ -164,7 +161,7 @@ npm run build
 
 All protected endpoints require authentication via JWT token. Include the token in the request header:
 
-```
+```http
 Authorization: Bearer <your-jwt-token>
 ```
 
@@ -257,7 +254,25 @@ vehicle_rental_systam/
 
 ## 📄 License
 
-ISC
+This project is licensed under the ISC License.
+
+### ISC License
+
+```text
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+```
+
+For more information, see the [ISC License](https://opensource.org/licenses/ISC) page.
 
 ---
 
